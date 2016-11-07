@@ -20,6 +20,13 @@ func New(max int) *RollingBuf {
 		len:      0,
 	}
 }
+func (rBuf *RollingBuf) Len() int {
+	return rBuf.len
+}
+func (rBuf *RollingBuf) Get(position int) interface{} {
+	// TODO: Deny values that are out of range
+	return rBuf.values[position]
+}
 func (rBuf *RollingBuf) Add(value interface{}) {
 
 	if rBuf.addPos == rBuf.max {
